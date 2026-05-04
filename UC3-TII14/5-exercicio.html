@@ -1,0 +1,32 @@
+<!-- Criar um conversor de celsius para fahrenheit -->
+<!-- (celsius * 9/5)+32 -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de celsius para fahrenheit</title>
+</head>
+<body>
+    <h1>Coversor de celcius para fahrenheit</h1>
+    <label for="">Digite o valor em Celsius</label>
+    <input type="text" id="celsius">
+    <button onclick="converter()">Converte</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function converter(){
+            let celsius = parseFloat(document.getElementById('celsius').value);
+            const calculo = (celsius * 9/5)+32;
+
+            resultado = document.getElementById('resultado');
+            resultado.innerText = calculo
+
+        }
+    </script>
+</body>
+</html>
+
