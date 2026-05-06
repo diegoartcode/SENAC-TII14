@@ -1,0 +1,160 @@
+<!-- 1 - Desconto compra mínima
+Solicite o valor de uma compra. 
+Se for maior que R$ 200, ofereça 15% de desconto mostrando o (valor, valor de desconto e valor com desconto aplicado).
+
+2 - Notas e Conceitos
+Solicite a nota de um aluno (de 0 a 10) e classifique-o:
+Se for menor que 5, exiba "Reprovado".
+Se for de 5 a 6.9, exiba "Recuperação".
+Se for maior ou igual a 7, exiba "Aprovado".
+Se a nota for 10, exiba "Aprovado com excelência!".
+
+3 - Maior Número com EmpateSolicite três números e informe qual é o maior.
+Se houver empate entre dois ou mais números, avise ao usuário.
+
+4 - Classificação de IdadeCrie um programa que solicita a idade do usuário e classifica em:
+Menor de idadese for menor que 18 anos.
+Adultose estiver entre 18 e 59 anos.
+Idoso se tiver 60 anos ou mais. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Exercicio 1</h2>
+    <p>Desconto compra mínima <br>
+        Solicite o valor de uma compra. <br>
+        Se for maior que R$ 200, ofereça 15% de desconto mostrando o (valor, valor de desconto e valor com desconto
+        aplicado).</p>
+
+    <input type="text" id="input-compra">
+    <button onclick="btn1()">Verificar desconto</button>
+    <p id="resul-1"></p>
+    <hr>
+    <h2>Exercicio 2</h2>
+    <p>
+        Notas e Conceitos<br>
+        Solicite a nota de um aluno (de 0 a 10) e classifique-o:<br>
+        Se for menor que 5, exiba "Reprovado".<br>
+        Se for de 5 a 6.9, exiba "Recuperação".<br>
+        Se for maior ou igual a 7, exiba "Aprovado".<br>
+        Se a nota for 10, exiba "Aprovado com excelência!".
+    </p>
+
+    <input type="text" id="input-nota">
+    <button onclick="btn2()">Ver resultado</button>
+    <p id="resul-2"></p>
+
+    <hr>
+
+
+
+    <h2>Exercicio 3</h2>
+    <p>
+        Maior Número com EmpateSolicite três números e informe qual é o maior. <br>
+        Se houver empate entre dois ou mais números, avise ao usuário.
+    </p>
+    <input type="text" id="input-num1"> <br>
+    <input type="text" id="input-num2"> <br>
+    <input type="text" id="input-num3"> <br>
+    <button onclick="btn3()">Verificar</button>
+    <p id="resul-3"></p>
+
+
+    <hr>
+
+
+    <h2>Exercicio 4</h2>
+    <p>
+        Classificação de Idade
+        <br>
+        Crie um programa que solicita a idade do usuário e classifica em:<br>
+        Menor de idade se for menor que 18 anos.<br>
+        Adulto se estiver entre 18 e 59 anos.<br>
+        Idoso se tiver 60 anos ou mais.
+    </p>
+
+
+
+
+    <script>
+
+        function btn1() {
+            inputCompra = document.getElementById('input-compra').value
+
+            resultadoExercicio1 = document.getElementById('resul-1');
+
+
+            if (inputCompra > 200) {
+                let desconto = inputCompra * 0.15;
+                let valorFinal = inputCompra - desconto;
+
+                resultadoExercicio1.innerText = `
+                Valor da compra: R$ ${inputCompra} 
+                Desconto: R$ ${desconto} 
+                Valor final: ${valorFinal}
+                `
+
+            } else {
+                resultadoExercicio1.innerText = `Sem desconto`;
+            }
+
+
+
+        }
+
+
+        function btn2() {
+            inputNota = document.getElementById('input-nota').value
+            resultadoExercicio2 = document.getElementById('resul-2');
+
+            if (inputNota == 10) {
+                resultadoExercicio2.innerText = 'Aprovado com excelência';
+            }
+            else if (inputNota >= 7) {
+                resultadoExercicio2.innerText = 'Aprovado';
+            }
+            else if (inputNota >= 5) {
+                resultadoExercicio2.innerText = 'Recuperação';
+            } else {
+                resultadoExercicio2.innerText = 'Reprovado';
+            }
+
+        }
+
+
+
+
+
+        function btn3() {
+            inputNum1 = document.getElementById('input-num1').value
+            inputNum2 = document.getElementById('input-num2').value
+            inputNum3 = document.getElementById('input-num3').value
+
+            resultadoExercicio3 = document.getElementById('resul-3');
+
+
+            if (inputNum1 > inputNum2 && inputNum1 > inputNum3) {
+                resultadoExercicio3.innerText = "O maior numero é " + inputNum1;
+            }
+            else if (inputNum2 > inputNum1 && inputNum2 > inputNum3) {
+                resultadoExercicio3.innerText = "O maior numero é " + inputNum2;
+            }
+            else if (inputNum3 > inputNum1 && inputNum3 > inputNum2) {
+                resultadoExercicio3.innerText = "O maior numero é " + inputNum3;
+            } else {
+                resultadoExercicio3.innerText = 'Houve um empate entre os números'
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

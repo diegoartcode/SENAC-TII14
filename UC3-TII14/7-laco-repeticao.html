@@ -24,37 +24,71 @@
 
 
         // for = para
-        for(let i=1;i<=10;i++) { // i++ =  i+1 
+        for (let i = 1; i <= 10; i++) { // i++ =  i = i+1 
             console.log('Passo ' + i)
         }
-        for(let i=10;i>=1;i--) { // i-- =  i-1 
+
+
+
+        for (let i = 10; i >= 1; i--) { // i-- =  i-1 
             console.log('Passo ' + i)
         }
 
         let num = parseInt(prompt('digite um numero'))
 
-        for(let i=0;i<=10;i++){
+        for (let i = 0; i <= 10; i++) {
             //  console.log(i + ' x ' + num + ' = ' +  i * num)
-             console.log(`${i} x ${num} = ${i*num}`)
-     
+            console.log(`${i} x ${num} = ${i * num}`)
         }
 
-        // entrada de dados sendo '+' '-' 'x' '/'
 
-        // condicional '+' '-' 'x' '/'
+        // while = enquanto
+        let i = 0;
+        while (i <= 10) {
+            console.log('laço while' + i);
+            i++;
+        }
 
-        // entrada de dados num
+console.log('--------------------')
+        // do while = faça enquanto
+        i = 0;
+        do{
+             console.log('laço do while' + i);
+             i++
+        }while(i<=10);
 
-        // 0 - 10
-        // 0 * 10
-        // 0 + 10
-        // 0 / 10
 
-        
+console.log('--------------------')
 
 
-       
-        
+
+                   
+        let lista = ["batata", 2, 3, 4, 5, 6, 7, 8, 9, 10, "Diego", false];
+        console.log(lista)
+        console.log(lista[12])
+
+        // forEach
+
+        let entrada = prompt('Digite um texto')
+
+        lista.forEach(
+            function (e) {
+                // console.log(e)
+
+                if(entrada  == e){
+                    console.log('Palavra encontrada')
+                }else{
+                    console.log('Palavra não existe')
+                }               
+               
+            }
+        )
+
+
+
+
+
+
     </script>
 </body>
 

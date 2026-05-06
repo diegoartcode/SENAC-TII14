@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- Desconto compra mínima
+Solicite o valor de uma compra.
+Se for maior que R$ 200, ofereça 15% de desconto mostrando o (valor, valor de desconto e valor com desconto aplicado). -->
+
+    <label for="">Digite o valor da compra</label> <br>
+    <input type="text" id="inputValor"> <br>
+    <button onclick="btnCalc()">Calcular</button> <br>
+
+    <p id="resultado"></p>
+
+    <script>
+        function btnCalc(){
+            let valor = document.getElementById('inputValor').value
+            // console.log(valor)
+
+            let resultado = document.getElementById('resultado')
+
+            if(valor > 200){
+                
+                let desconto = valor * 0.15;
+                let valorFinal = valor - desconto;              
+
+                resultado.innerText = `
+                    Valor da comprar: ${parseFloat(valor).toFixed(2)}
+                    Desconto: ${desconto}
+                    Valor final: ${valorFinal}
+                `
+            }else{
+                resultado.innerText = "Sem desconto"
+            }
+
+        }
+
+    </script>    
+</body>
+</html>

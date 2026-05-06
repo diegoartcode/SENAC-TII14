@@ -1,13 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
 
-    
-    
+    <script>
+
+                // entrada de dados sendo '+' '-' 'x' '/'
+
+        // condicional '+' '-' 'x' '/'
+
+        // entrada de dados num
+
+        // 0 - 10
+        // 0 * 10
+        // 0 + 10
+        // 0 / 10
+        let operador = prompt("Digite um operador (+, -, /, *)");
+        let num = parseInt(prompt('Digite um numero'));
+
+
+
+        if (operador === '+') {
+            for (let i = 0; i <= 10; i++) {
+                console.log(`${num} + ${i} = ${num + i}`);
+            }
+        }else if(operador === '-'){
+            for (let i = 0; i <= 10; i++) {
+                console.log(`${num} - ${i} = ${num  - i}`);
+            }
+        
+        }else if(operador === '/'){
+            for (let i = 0; i <= 10; i++) {
+                console.log(`${num} / ${i} = ${num / i}`);
+            }
+        
+        }else if(operador === '*'){
+            for (let i = 0; i <= 10; i++) {
+                console.log(`${num} x ${i} = ${num * i}`);
+            }
+        }else{
+            console.log('Operador invalido')
+        }
+    </script>
+
 </body>
+
 </html>
