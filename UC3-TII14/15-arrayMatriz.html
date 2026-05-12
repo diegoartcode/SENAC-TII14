@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array e Matriz</title>
+</head>
+
+<body>
+    <script>
+        // O que é array
+
+        // Um array é uma estrutura de dados que permite armazenar múltiplos valores em única variável. Em JavaScript, arrays são objetos especiais que armazenam elementos de forma indexada, começando do índice 0.
+
+        let frutas = ['Maça', 'Banana', 'Uva', 'Laranja'];
+        console.log(frutas);
+
+        let nomes = new Array('Diego', 'João', 'Maria', 'Romeu', 'Julieta');
+        console.log(nomes);
+
+        let misto =
+            [1, 'Jhenny', true, { nome: 'Diego', sobrenome: 'Rodrigues' }, [5, 3, 6]];
+
+        console.log(misto[3]['nome']);
+
+        console.log(misto[2]);
+
+        console.log(misto[4][2]);
+
+        let matriz = [
+            [1, 2, 3],
+            [4, 5, [5, 3, 6]],
+            [7, 8, 9],
+            ['diego']
+        ];
+
+        console.log(matriz[1][2][1])
+
+
+        usuario = [
+            { nome: 'Diego', idade: 35 },
+            { nome: 'Maria', idade: 50 }
+        ];
+
+        console.log('------------');
+        let numeros = [2, 6, 9, 5, 6, 26];
+
+        console.log(numeros.length); // pegar tanho do array
+
+        let texto = ['O','l','á',' ' ,'m','u','n','d','o','!'];
+
+        console.log(texto[3]);
+        console.log(texto.length); // pegar tanho do array
+
+        for (i = 0; i < texto.length; i++) {
+            console.log(texto[i])
+
+            if (texto[i] == '!') {
+                console.log('Posição' + i + 1)
+            }
+        }
+
+        console.log('---------------')
+        textocompleto = ""
+        for (i = 0; i < texto.length; i++) {
+            letra = texto[i];
+            textocompleto += letra
+        }
+
+        console.log(textocompleto)
+
+
+        console.log('--------------------------')
+
+        //  preencher um array 
+
+
+        // ecolher quantidade de posições do array
+        let tamanho = prompt("Quantos elementos você deseja no array");
+        tamanho = Number(tamanho);
+
+        let array1 = [];
+
+        for(i=0;i < tamanho; i++){
+            // pedir para o usuario preencher o array
+            // alert(`Posição ${i+1}`)
+            entrada = prompt(`Digite o valor para o índice ${i}: `)
+            console.log(entrada)
+            array1[i] = entrada
+           
+        }
+
+         console.log(array1)
+        
+
+
+     
+
+        
+
+
+
+    </script>
+
+
+</body>
+
+</html>
