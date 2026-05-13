@@ -211,18 +211,18 @@
 
         // indexOf() - encontra o indice de um elemento
 
-        let cores = ['Azul',  'Amarelo', 'Vermelho', 'Verde', 'Preto'];
+        let cores = ['Azul', 'Amarelo', 'Vermelho', 'Verde', 'Preto'];
         console.log(cores.indexOf('Vermelho'));
 
         // splice() - remove ou substitui elementos
 
         // console.log(cores.splice(2,1))
-        console.log(cores.splice(1,2));
+        console.log(cores.splice(1, 2));
         console.log(cores);
 
         // slice() - retorna parte de um array
 
-        console.log(cores.slice(1,3))
+        console.log(cores.slice(1, 3))
         console.log(cores)
 
         // map() - retorna um novo array modificado
@@ -234,17 +234,70 @@
 
 
         // filter() - filtra elementos com base em uma condição
-        let pares = numeros.filter(function(num){
-          
-            if(num % 2 === 0){
+        numeros.filter(function (num) {
+            if (num % 2 === 0) {
                 console.log(num)
             }
+        });
 
-        })
+        // atividade 
+        // o usuario entra com um numero positivo
+        // e o sistema fala se ele é positivo ou negativo
 
-
-
+        numUsuario = parseInt(prompt('Digite um numero'));    
         
+        if(isNaN(numUsuario)){
+            console.log("Erro: Insira apenas números válidos")
+        }
+        else if (numUsuario === 0) {
+            console.log(`valor digitado ${numUsuario} é neutro`)
+        }
+        else if (numUsuario < 0) {
+            console.log(`valor digitado ${numUsuario} é negativo`)
+        }
+        else {
+            console.log(`valor digitado ${numUsuario} é positivo`)
+        }
+
+        // atividade 
+        // agora mostre se o numero é par ou impar
+
+        if(numUsuario % 2 === 0){
+            console.log(`O número ${numUsuario} é par!`);
+        }else{
+            console.log(`O número ${numUsuario} é impar!`);
+        }
+
+        // atividade
+        // crie um array chamado alunos com pelo menos 5 nomes
+        // adicione um aluno novo ao final e outro no inicio
+        // remova o primeiro aluno da lista
+        // encontre o indice de um nome especifico
+        // filtre os alunos cujo nome tenha mais de 5 letras
+
+        alunos = ['diego','maria','joão','romeu','julieta'];
+
+        alunos.push('mariana');
+        console.log(alunos);
+        alunos.unshift('paulo');
+        console.log(alunos);
+        alunos.shift('diego');
+        console.log(alunos);
+
+        console.log(alunos.indexOf('julieta'));
+
+        console.log(alunos.filter(nome => nome.length > 5))
+
+
+
+
+
+
+
+
+
+
+
 
 
 
