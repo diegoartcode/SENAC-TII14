@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM - Aula 3: Modificando Estilos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #333;
+            border-bottom: 3px solid #ff9800;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #555;
+            margin-top: 30px;
+        }
+
+        .exemplo {
+            background-color: #f9f9f9;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .resultado {
+            background-color: #fff3e0;
+            border: 1px solid #ff9800;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background-color: #e68900;
+        }
+
+        #elemento-estilo {
+            padding: 20px;
+            margin: 10px 0;
+            border: 2px solid #333;
+            background-color: #fff;
+            color: #000;
+            font-size: 16px;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .info-box {
+            background-color: #e3f2fd;
+            border: 1px solid #2196f3;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+
+        .box-exemplo {
+            width: 100px;
+            height: 100px;
+            background-color: #2196f3;
+            margin: 10px 0;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        #elemento-multiplo {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🎨 Manipulação de DOM - Aula 3: Modificando Estilos</h1>
+
+        <p>Nesta aula aprenderemos como modificar os estilos CSS dos elementos usando JavaScript.</p>
+
+        <!-- ============================================ -->
+        <!-- EXEMPLO 1: Propriedade style -->
+        <!-- ============================================ -->
+        <h2>1️⃣ Modificando Estilos - Propriedade style</h2>
+
+        <div class="exemplo">
+            <p>A propriedade <code>style</code> permite modificar estilos CSS diretamente.</p>
+            <p>Sintaxe: <code>elemento.style.propriedade = "valor"</code></p>
+            <div class="info-box">
+                💡 <strong>Nota:</strong> Propriedades CSS com hífen (como background-color) viram camelCase em
+                JavaScript (backgroundColor)
+            </div>
+        </div>
+
+        <div id="elemento-estilo">Este elemento terá seus estilos modificados</div>
+
+        <button onclick="mudarCor()">Mudar Cor de Fundo</button>
+        <button onclick="mudarFont()">Mudar Tamanho da Fonte</button>
+        <button onclick="mudarBorda()">Mudar Borda</button>
+        <button onclick="restaurou()">Restaurar</button>
+
+        <div class="resultado" id="resultado1"></div>
+
+        <!-- ============================================ -->
+        <!-- EXEMPLO 2: Múltiplos Estilos -->
+        <!-- ============================================ -->
+        <h2>2️⃣ Modificando Múltiplos Estilos</h2>
+
+        <div class="exemplo">
+            <p>Podemos modificar vários estilos de uma vez.</p>
+        </div>
+
+        <div id="elemento-multiplo" style="padding: 20px; margin: 10px 0; background-color: #e0e0e0;">
+            Elemento com múltiplos estilos
+        </div>
+
+        <button onclick="aplicarMultiplosEstilos()">Aplicar Múltiplos Estilos</button>
+        <button onclick="restaurarMultiplosEstilos()">Restaurar</button>
+
+        <div class="resultado" id="resultado2"></div>
+
+        <!-- ============================================ -->
+        <!-- EXEMPLO 3: Adicionar/Remover Classes -->
+        <!-- ============================================ -->
+        <h2>3️⃣ Adicionando e Removendo Classes</h2>
+
+        <div class="exemplo">
+            <p>Usar classes CSS é mais eficiente que modificar estilos individuais.</p>
+            <p>Métodos: <code>classList.add()</code>, <code>classList.remove()</code>, <code>classList.toggle()</code>
+            </p>
+        </div>
+
+        <style>
+            .destaque {
+                background-color: #ffeb3b !important;
+                color: #000 !important;
+                font-weight: bold;
+                padding: 20px;
+                border-radius: 8px;
+            }
+
+            .oculto {
+                display: none;
+            }
+
+            .visivel {
+                display: block;
+            }
+        </style>
+
+        <div id="elemento-classe" style="padding: 20px; margin: 10px 0; background-color: #f0f0f0;">
+            Elemento para adicionar/remover classes
+        </div>
+
+        <button onclick="adicionarClasse()">Adicionar Classe "destaque"</button>
+        <button onclick="removerClasse()">Remover Classe "destaque"</button>
+        <button onclick="alternarClasse()">Alternar Classe "destaque"</button>
+
+        <div class="resultado" id="resultado3"></div>
+
+        <!-- ============================================ -->
+        <!-- EXEMPLO 4: Verificar Classes -->
+        <!-- ============================================ -->
+        <h2>4️⃣ Verificando Classes - classList.contains()</h2>
+
+        <div class="exemplo">
+            <p>O método <code>classList.contains()</code> verifica se um elemento tem uma classe.</p>
+        </div>
+
+        <button onclick="verificarClasse()">Verificar se tem Classe "destaque"</button>
+
+        <div class="resultado" id="resultado4"></div>
+
+        <!-- ============================================ -->
+        <!-- EXEMPLO 5: Animações com Estilos -->
+        <!-- ============================================ -->
+        <h2>5️⃣ Criando Animações com Estilos</h2>
+
+        <div class="exemplo">
+            <p>Podemos criar animações modificando estilos com JavaScript.</p>
+        </div>
+
+        <div class="box-exemplo" id="caixa-animada">
+            <img src="data:image/webp;base64,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" alt="">
+        </div>
+
+        <button onclick="animar()">Animar Caixa</button>
+        <button onclick="restaurarAnimacao()">Restaurar</button>
+
+        <div class="resultado" id="resultado5"></div>
+
+        <!-- ============================================ -->
+        <!-- RESUMO DOS MÉTODOS -->
+        <!-- ============================================ -->
+        <h2>📊 Resumo dos Métodos</h2>
+
+        <table border="1" cellpadding="10" style="width: 100%; border-collapse: collapse;">
+            <tr style="background-color: #ff9800; color: white;">
+                <th>Método/Propriedade</th>
+                <th>O que faz</th>
+                <th>Exemplo</th>
+            </tr>
+            <tr>
+                <td><code>element.style.propriedade</code></td>
+                <td>Modifica um estilo CSS</td>
+                <td><code>elemento.style.backgroundColor = "red"</code></td>
+            </tr>
+            <tr>
+                <td><code>classList.add()</code></td>
+                <td>Adiciona uma classe</td>
+                <td><code>elemento.classList.add('destaque')</code></td>
+            </tr>
+            <tr>
+                <td><code>classList.remove()</code></td>
+                <td>Remove uma classe</td>
+                <td><code>elemento.classList.remove('destaque')</code></td>
+            </tr>
+            <tr>
+                <td><code>classList.toggle()</code></td>
+                <td>Alterna uma classe (adiciona se não tem, remove se tem)</td>
+                <td><code>elemento.classList.toggle('destaque')</code></td>
+            </tr>
+            <tr>
+                <td><code>classList.contains()</code></td>
+                <td>Verifica se tem uma classe</td>
+                <td><code>elemento.classList.contains('destaque')</code></td>
+            </tr>
+        </table>
+
+        <!-- ============================================ -->
+        <!-- TABELA DE CONVERSÃO CSS PARA JAVASCRIPT -->
+        <!-- ============================================ -->
+        <h2>📝 Conversão de Propriedades CSS para JavaScript</h2>
+
+        <table border="1" cellpadding="10" style="width: 100%; border-collapse: collapse;">
+            <tr style="background-color: #ff9800; color: white;">
+                <th>CSS</th>
+                <th>JavaScript</th>
+            </tr>
+            <tr>
+                <td><code>background-color</code></td>
+                <td><code>backgroundColor</code></td>
+            </tr>
+            <tr>
+                <td><code>font-size</code></td>
+                <td><code>fontSize</code></td>
+            </tr>
+            <tr>
+                <td><code>border-radius</code></td>
+                <td><code>borderRadius</code></td>
+            </tr>
+            <tr>
+                <td><code>margin-top</code></td>
+                <td><code>marginTop</code></td>
+            </tr>
+            <tr>
+                <td><code>padding-left</code></td>
+                <td><code>paddingLeft</code></td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function mudarCor() {
+            const elemento = document.getElementById('elemento-estilo');
+            console.log(elemento)
+
+            elemento.style.backgroundColor = '#ff6b6b';
+
+            document.getElementById('resultado1').innerHTML = `<strong> ✅ Cor modificada! </strong> <br>
+            BackgroudColor: #ff6b6b`;
+        }
+
+        function mudarFont() {
+            const elemento2 = document.getElementById('elemento-estilo');
+
+            elemento2.style.fontSize = '100px';
+
+            document.getElementById('resultado1').innerHTML = `<strong> ✅ Tamanho da font modificada! </strong> <br>
+            Font-size: 16px`;
+        }
+
+        function mudarBorda() {
+            const elemento2 = document.getElementById('elemento-estilo');
+
+            elemento2.style.border = '2px solid #00FF00';
+
+            document.getElementById('resultado1').innerHTML = `<strong> ✅ Borda modificada! </strong> <br>
+            border: 1px solid #ff9800`;
+        }
+
+        function restaurou() {
+            const elemento2 = document.getElementById('elemento-estilo');
+
+            elemento2.style.border = '2px solid #333'
+            elemento2.style.backgroundColor = '#fff'
+            elemento2.style.fontSize = '16px'
+
+            document.getElementById('resultado1').innerHTML = `<strong> ✅ Restaurado! </strong> <br>
+            restaurado`;
+        }
+
+        function aplicarMultiplosEstilos() {
+            const elemento = document.getElementById('elemento-multiplo');
+
+            elemento.style.backgroundColor = '#4caf50';
+            elemento.style.color = 'white';
+            elemento.style.fontSize = '18px';
+            elemento.style.padding = '18px';
+            elemento.style.borderRadius = '10px';
+            elemento.style.textAling = 'center';
+
+            document.getElementById('resultado2').innerHTML = `<strong> ✅ Multiplos estilos aplicados! </strong> <br>
+            backgroundColor : #4caf5; <br>
+            color:white;
+            fontSize: 18px; <br>
+            padding: 10px; <br>
+            borderRadius: 10px; <br>
+            textAling: center;`
+                ;
+        }
+
+        function restaurarMultiplosEstilos() {
+            const elemento = document.getElementById('elemento-multiplo');
+
+            elemento.removeAttribute('style');
+
+            document.getElementById('resultado2').innerHTML = `
+                <strong>Restaurado!</strong> <br>
+                `;
+        }
+
+        function adicionarClasse() {
+            const elemento = document.getElementById('elemento-classe');
+
+            elemento.classList.add('destaque');
+
+            document.getElementById('resultado3').innerHTML = `
+                <strong>Classe destaque adicionada!</strong> <br>
+                `;
+        }
+
+        function removerClasse() {
+            const elemento = document.getElementById('elemento-classe');
+
+            elemento.classList.remove('destaque');
+
+            document.getElementById('resultado3').innerHTML = `
+                <strong>Classe "destaque" removida!</strong> <br>
+                `;
+        }
+
+        function alternarClasse() {
+            const elemento = document.getElementById('elemento-classe');
+
+            elemento.classList.toggle('destaque')
+
+            const temClass = elemento.classList.contains('destaque');
+            const status = temClass ? 'adicionada' : 'removida';
+
+            document.getElementById('resultado3').innerHTML = `
+                <strong>Classe "destaque" foi ${status}!</strong> <br>
+                `;
+        }
+
+        function verificarClasse() {
+            const elemento = document.getElementById('elemento-classe');
+
+            const temClass = elemento.classList.contains('destaque');
+            const status = temClass ? 'SIM, tem a classe' : 'NÃO, tem a class';
+
+            // if(temClass == True){
+            //     'SIM, tem a classe'
+            // }else{
+            //     'NÃO, tem a class'
+            // }
+
+            document.getElementById('resultado4').innerHTML = `
+                <strong>Verificação : </strong> <br>
+                O elemento tem a classe "destaque"? ${status}!
+                `;
+        }
+
+        function animar() {
+
+            const caixa = document.getElementById('caixa-animada');
+
+            // Resetar a posição
+            caixa.style.transform = 'translateX(0px) rotate(0deg)';
+            caixa.style.backgroundColor = '#2196f3';
+
+            let posicao = 0;
+            let rotacao = 0;
+
+            let intervalo = setInterval(() => {
+
+                posicao += 10;
+                rotacao += 5;
+
+                caixa.style.transform =
+                    `translateX(${posicao}px) rotate(${rotacao}deg)`;
+
+                if (posicao % 20 === 0) {
+
+                    const cores = [
+                        '#2196f3',
+                        '#ff9800',
+                        '#4caf50',
+                        '#f44336',
+                        '#9c27b0'
+                    ];
+
+                    caixa.style.backgroundColor =
+                        cores[Math.floor(posicao / 20) % cores.length];
+                }
+
+                if (posicao >= 200) {
+
+                    clearInterval(intervalo);
+
+                    document.getElementById('resultado5').innerHTML =
+                        `<strong>✅ Animação completa</strong><br>
+                Posição final : ${posicao}px<br>
+                Rotação final : ${rotacao}°`;
+                }
+
+            }, 50);
+        }
+
+        function restaurarAnimacao() {
+            const caixa = document.getElementById('caixa-animada');
+
+            caixa.style.transform = 'translateX(0px) rotate(0deg)';
+            caixa.style.backgroundColor = '#2196f3';
+
+            document.getElementById('resultado5').innerHTML =
+                `<strong>Restaurado!</strong><br>
+                `;
+        }
+
+    </script>
+
+</body>
+
+</html>
