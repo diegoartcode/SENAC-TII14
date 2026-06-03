@@ -52,16 +52,16 @@ formulario.addEventListener('submit', function (event) {
         mensagem.classList.add('sucesso');
 
 
-        // setTimeout(() => {
-        //     mensagem.innerText = "";
-        //     mensagem.classList.remove('sucesso')
-        // },3000); //3000 ms = 3 segundos
-
-        const intervalo = setInterval(() => {
+        setTimeout(() => {
             mensagem.innerText = "";
-            mensagem.classList.remove('sucesso');
-            clearInterval(intervalo) // para o intervalo após a primeira execução
-        },3000)
+            mensagem.classList.remove('sucesso')
+        },3000); //3000 ms = 3 segundos
+
+        // const intervalo = setInterval(() => {
+        //     mensagem.innerText = "";
+        //     mensagem.classList.remove('sucesso');
+        //     clearInterval(intervalo) // para o intervalo após a primeira execução
+        // },3000)
 
     }
 
